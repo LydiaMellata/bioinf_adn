@@ -26,10 +26,10 @@ def count_nuclides(DNA):
     occurence_T = DNA.count('T')
     occurence_C = DNA.count('C')
     occurence_G = DNA.count('G')
-    print('Nuclide A count: ' + occurence_A +
-            'Nuclide T count: ' + occurence_T +
-            'Nuclide C count: ' + occurence_C +
-            'Nuclide G count: ' + occurence_G)
+    print('Nuclide A count: ' + str(occurence_A) + '\n' +
+            'Nuclide T count: ' + str(occurence_T) + '\n' +
+            'Nuclide C count: ' + str(occurence_C) + '\n' +
+            'Nuclide G count: ' + str(occurence_G))
 
 
 
@@ -41,13 +41,13 @@ def count_nuclides(DNA):
 
 DNA = 'AAAACCCGGT'
 
-def reverse_complement(DNA, nuclide_A,nuclide_T,nuclide_C, nuclide_G):
+def reverse_complement(DNA):
     # first step is to reverse the ADN
     reversed_DNA = ADN[::-1]
 
     #second step: use the function swap_nuclides to change the values of A,T,C,G
-    complement_DNA = swap_nuclides(reversed_DNA, nuclide_A,nuclide_T)
-    final_DNA = swap_nuclides(complement_DNA, nuclide_C, nuclide_G)
+    complement_DNA = swap_nuclides(reversed_DNA, 'A', 'T')
+    final_DNA = swap_nuclides(complement_DNA, 'C', 'G')
 
     return final_DNA
 
