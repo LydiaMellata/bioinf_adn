@@ -3,7 +3,7 @@ import adn_string_parsing
 if __name__ == "__main__":
     # test 1
     DNA = 'GATGGAACTTGACTACGTAAATT'
-    RNA = adn_string_parsing.swap_nuclides(DNA, 'T', 'U')
+    RNA = adn_string_parsing.replace_nuclides(DNA, 'T', 'U')
     assert RNA == 'GAUGGAACUUGACUACGUAAAUU'
 
     # test 2
@@ -13,3 +13,4 @@ if __name__ == "__main__":
     # test 3
     DNA3 = 'AAAACCCGGT'
     rv = adn_string_parsing.reverse_complement(DNA3)
+    assert rv == 'ACCGGGTTTT', rv
