@@ -1,73 +1,54 @@
-#An RNA string is a string formed from the alphabet containing 'A', 'C', 'G', and 'U'.
-#Given a DNA string t corresponding to a coding strand,
+# An RNA string is a string formed from the alphabet containing 'A', 'C', 'G', and 'U'.
+# Given a DNA string t corresponding to a coding strand,
 # its transcribed RNA string u is formed by replacing all occurrences of 'T' in t with 'U' in u.
-#Given: A DNA string t having length at most 1000 nt.
-#Return: The transcribed RNA string of t.
+# Given: A DNA string t having length at most 1000 nt.
+# Return: The transcribed RNA string of t.
 
 ADN = 'GATGGAACTTGACTACGTAAATT'
 
-def sequence_occurence (ADN, nucleide1, nucleide2):
-    #the method replace ALL the occurences of T to U
-    nucleide1 = 'T'
-    bucleide2 = 'U'
-    RNA = sequence.replace(nucleide1,nucleide2)
-    print (RNA)
+# the method replace ALL the occurences of T to U
+# Proper documentation
+# Output : RNA = GAUGGAACUUGACUACGUAAAUU
+def swap_nuclides(DNA, nucleide1, nucleide2):
+    RNA = DNA.replace(nucleide1, nucleide2)
+    return RNA
 
-#The output :
-
-# RNA = GAUGGAACUUGACUACGUAAAUU
-#___________________________________________________________#
-
-#A string is simply an ordered collection of symbols selected from
+# A string is simply an ordered collection of symbols selected from
 # some alphabet and formed into a word; the length of a string is the number of symbols that it contains.
-#An example of a length 21 DNA string (whose alphabet contains the symbols 'A', 'C', 'G', and 'T') is "ATGCTTCAGAAAGGTCTTACG."
-#Given: A DNA string s of length at most 1000 nt.
-#Return: Four integers (separated by spaces) counting the respective number of times that the symbols 'A', 'C', 'G', and 'T' occur in s.
+# An example of a length 21 DNA string (whose alphabet contains the symbols 'A', 'C', 'G', and 'T') is "ATGCTTCAGAAAGGTCTTACG."
+# Given: A DNA string s of length at most 1000 nt.
+# Return: Four integers (separated by spaces) counting the respective number of times that the symbols 'A', 'C', 'G', and 'T' occur in s.
 
-ADN = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'
+DNA = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'
+# Output : 20 12 17 21
+def count_nuclides(DNA):
+    occurence_A = DNA.count('A')
+    occurence_T = DNA.count('T')
+    occurence_C = DNA.count('C')
+    occurence_G = DNA.count('G')
+    print('Nuclide A count: ' + occurence_A +
+            'Nuclide T count: ' + occurence_T +
+            'Nuclide C count: ' + occurence_C +
+            'Nuclide G count: ' + occurence_G)
 
-def count_occurences(ADN):
 
-    occurence_A = ADN.count('A')
 
-    occurence_T = ADN.count('T')
-
-    occurence_C = ADN.count('C')
-
-    occurence_D = ADN.count('D')
-
-    return (ADN.count('A') + '' + ADN.count('T') + '' + ADN.count('C') + ADN.count('D'))
-
-#Output : 20 12 17 21
-
-#_________________________________________________________#
-
-#In DNA strings, symbols 'A' and 'T' are complements of each other, as are 'C' and 'G'.
-#The reverse complement of a DNA string s is the string sc formed by reversing the symbols of s,
+# In DNA strings, symbols 'A' and 'T' are complements of each other, as are 'C' and 'G'.
+# The reverse complement of a DNA string s is the string sc formed by reversing the symbols of s,
 # then taking the complement of each symbol (e.g., the reverse complement of "GTCA" is "TGAC").
-#Given: A DNA string s of length at most 1000 bp.
-#Return: The reverse complement sc of s.
+# Given: A DNA string s of length at most 1000 bp.
+# Return: The reverse complement sc of s.
 
-ADN = 'AAAACCCGGT'
+DNA = 'AAAACCCGGT'
 
-def reverse_complement(ADN, nucleide1,nucleide2,nucleide3, nucleide4):
+def reverse_complement(DNA, nuclide_A,nuclide_T,nuclide_C, nuclide_G):
+    # first step is to reverse the ADN
+    reversed_DNA = ADN[::-1]
 
-    #define nucleides
+    #second step: use the function swap_nuclides to change the values of A,T,C,G
+    complement_DNA = swap_nuclides(reversed_DNA, nuclide_A,nuclide_T)
+    final_DNA = swap_nuclides(complement_DNA, nuclide_C, nuclide_G)
 
-    nucleide1 = 'A'
-    nucleide2 = 'T'
-    nucleide3 = 'C'
-    nucleide4 = 'G'
-    #first step is to reverse the ADN:
+    return final_DNA
 
-    reversed_ADN = ADN[::-1]
 
-#((((DO A FOR LOOP))))
-    #second step: use the function sequence occurence to change the values of A,T,C,G
-    changed_ADN = sequence_occurence(ADN,nucleide1 ,nucleide2 )
-
-    final_ADN = sequence_occurence(ADN,nucleide3 ,nucleide3 )
-
-    return final_ADN
-
-#_________________________________________________#
